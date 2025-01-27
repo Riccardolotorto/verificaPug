@@ -10,9 +10,10 @@ html
     article
       each animal in animale
         div
-          img(src=`${animal.foto}`, width="500", height="500")
+          img(src="https://i.imgur.com/ub9uK8u.png", width="500", height="500")
           h2 #{animal.specie_animale}
           p #{animal.razza_animale}
           p #{animal.area_provenienza}
           p #{animal.rischio_estinzione}
+          a(href=`/album?id=${animal.id}`) View Instructions
           

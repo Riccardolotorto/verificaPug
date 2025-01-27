@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title #{title}
+    link(rel='stylesheet', href='/css/style.css')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    header.header
+      h1 Album
+
+    article
+      div
+        div
+          img(src="https://i.imgur.com/ub9uK8u.png", width="500", height="500")
+        div
+          h2
+            strong razza_animale: 
+            | #{animalll?.razza_animale}
+          p
+            strong rischio_estinzione: 
+            | #{animalll?.rischio_estinzione}
+          p
+            strong area_provenienza: 
+            | #{animalll?.area_provenienza}
+          p
+            strong specie_animale: 
+            | #{animalll?.specie_animale}
+         
