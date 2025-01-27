@@ -1,27 +1,31 @@
 var express = require('express');
-const animale = require('./animals.json');
+const animalsData = require('./animals.json');
 var app = express();
 app.set('view engine', 'pug'); 
 app.use(express.static(__dirname + '/public')); 
 
 app.get('/', function (req, res) {
     res.render('index', {
-        animale: animale.animals
+        animale: animalsData.animals
     });
 });
 
-app.get('/api/albumAnimali', (req, res) => {
-    res.render('index', {
-        animale: animale.animals
-    });
-});
+// Endpoint API
+app.get('/api/album-animali', (req, res) => {
+    res.json(animalsData);
+  });
 
-app.get('/album', (req, res) => {
-    const animalll = animale.animals.find((p) => p.id_figurina === req.query.id_figurina);  
-    res.render('album', {
-        animalll
-    });
-});
+// Rotta per generare pagine per ogni animale
+app.get('/album/:id', (req, res) => {
+    const animal = animalsData.animals.find(
+      (a) => a.id_figurina === parseInt(req.params.id)
+    );
+    if (animal) {
+      res.render('album', { animal });
+    } else {
+      res.status(404).send('Animale non trovato');
+    }
+  });
 
 
 app.listen(3000, function () {

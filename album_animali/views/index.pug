@@ -1,19 +1,13 @@
 doctype html
 html
   head
-    title #{title}
-    link(rel='stylesheet', href='/css/style.css')
-    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title Album Animali
+    link(rel="stylesheet", href="/css/style.css")
   body
     header
-      h1 #{title}
-    article
-      each animal in animale
-        div
-          img(src="https://i.imgur.com/ub9uK8u.png", width="500", height="500")
-          h2 #{animal.specie_animale}
-          p #{animal.razza_animale}
-          p #{animal.area_provenienza}
-          p #{animal.rischio_estinzione}
-          a(href=`/album?id=${animal.id}`) View Instructions
-          
+      h1 Album Animali
+    main
+      ul
+        each animal in animale
+          li
+            a(href=`/album/${animal.id_figurina}`) #{animal.razza_animale}
