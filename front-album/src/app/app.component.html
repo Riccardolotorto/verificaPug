@@ -1,0 +1,18 @@
+<div *ngIf="animals.length > 0; else loading">
+  <ul class="animal-list">
+    <li class="animal-card" *ngFor="let animal of animals">
+      <img [src]="animal.foto" [alt]="animal.razza_animale" />
+      <h2>{{ animal.razza_animale }}</h2>
+      <p><strong>Specie:</strong> {{ animal.specie_animale }}</p>
+      <p><strong>Area di provenienza:</strong> {{ animal.area_provenienza }}</p>
+      <p><strong>Rischio estinzione:</strong> {{ animal.rischio_estinzione ? 'Sì' : 'No' }}</p>
+    </li>
+  </ul>
+</div>
+<ng-template #loading>
+  <p>Caricamento in corso...</p>
+</ng-template>
+
+<footer>
+  <p>© 2025 Album Animali. Creato con ❤️ da Riccardo.</p>
+</footer>

@@ -3,6 +3,22 @@ const animalsData = require('./animals.json');
 var app = express();
 app.set('view engine', 'pug'); 
 app.use(express.static(__dirname + '/public')); 
+const cors = require('cors');
+app.use(
+  cors({
+    origin: '*', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Consenti questi metodi HTTP
+    allowedHeaders: ['Content-Type', 'Authorization'], // Intestazioni consentite
+  })
+);
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // Permetti tutte le origini
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Metodi consentiti
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Intestazioni consentite
+  next();
+});
+
 
 app.get('/', function (req, res) {
     res.render('index', {
